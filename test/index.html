@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script src="../dist/skr.js"></script>
+  <script>
+    const rawData = {
+      name: 'cym',
+      age: '18',
+      image: {
+        id: 1,
+        url: 'http://example.com/file.jpg'
+      },
+      deleted_at: '2018-01-01 00:00:00'
+    }
+    const result = skr.fit({
+      source: rawData,
+      reject: ['deleted_at'],
+      rules: {
+        name: 'rename:nickname',
+        age: 'number',
+        image: 'rename:imgUrl|map:url'
+      }
+    })
+    console.log('rawData: ', rawData)
+    console.log('result: ', result)
+  </script>
+</body>
+</html>
